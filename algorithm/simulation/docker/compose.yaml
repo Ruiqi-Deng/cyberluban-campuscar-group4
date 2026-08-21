@@ -1,0 +1,15 @@
+services:
+  bioshuttle-sim:
+    build:
+      context: ../..
+      dockerfile: simulation/docker/Dockerfile
+    image: bioshuttle-sim:humble
+    command:
+      - ros2
+      - launch
+      - bioshuttle_sim
+      - bioshuttle_sim.launch.py
+      - gui:=false
+      - rviz:=false
+    environment:
+      ROS_DOMAIN_ID: "42"

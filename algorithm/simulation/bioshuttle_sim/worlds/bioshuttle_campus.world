@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="bioshuttle_campus">
+    <gravity>0 0 -9.81</gravity>
+    <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field>
+    <physics name="ode_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <ambient>0.55 0.55 0.55 1</ambient>
+      <background>0.72 0.86 0.98 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- Cross-shaped campus road. -->
+    <model name="east_west_road">
+      <static>true</static>
+      <link name="road">
+        <pose>0 0 0.011 0 0 0</pose>
+        <collision name="collision"><geometry><box><size>22 4 0.02</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>22 4 0.02</size></box></geometry>
+          <material><ambient>0.22 0.24 0.27 1</ambient><diffuse>0.22 0.24 0.27 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="north_south_road">
+      <static>true</static>
+      <link name="road">
+        <pose>0 0 0.012 0 0 0</pose>
+        <collision name="collision"><geometry><box><size>4 16 0.02</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>4 16 0.02</size></box></geometry>
+          <material><ambient>0.22 0.24 0.27 1</ambient><diffuse>0.22 0.24 0.27 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Road center lines and intersection stop lines. -->
+    <model name="road_markings">
+      <static>true</static>
+      <link name="markings">
+        <visual name="east_line"><pose>-6 0 0.025 0 0 0</pose><geometry><box><size>6 0.05 0.01</size></box></geometry><material><ambient>0.95 0.80 0.10 1</ambient><diffuse>0.95 0.80 0.10 1</diffuse></material></visual>
+        <visual name="west_line"><pose>6 0 0.025 0 0 0</pose><geometry><box><size>6 0.05 0.01</size></box></geometry><material><ambient>0.95 0.80 0.10 1</ambient><diffuse>0.95 0.80 0.10 1</diffuse></material></visual>
+        <visual name="north_line"><pose>0 5 0.025 0 0 0</pose><geometry><box><size>0.05 6 0.01</size></box></geometry><material><ambient>0.95 0.80 0.10 1</ambient><diffuse>0.95 0.80 0.10 1</diffuse></material></visual>
+        <visual name="south_line"><pose>0 -5 0.025 0 0 0</pose><geometry><box><size>0.05 6 0.01</size></box></geometry><material><ambient>0.95 0.80 0.10 1</ambient><diffuse>0.95 0.80 0.10 1</diffuse></material></visual>
+        <visual name="stop_west"><pose>-2.35 0 0.03 0 0 0</pose><geometry><box><size>0.10 3.6 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <visual name="stop_east"><pose>2.35 0 0.03 0 0 0</pose><geometry><box><size>0.10 3.6 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <visual name="stop_south"><pose>0 -2.35 0.03 0 0 0</pose><geometry><box><size>3.6 0.10 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <visual name="stop_north"><pose>0 2.35 0.03 0 0 0</pose><geometry><box><size>3.6 0.10 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- Laboratory pickup area: open toward the road on the east side. -->
+    <model name="laboratory">
+      <static>true</static>
+      <pose>-7 -5 0 0 0 0</pose>
+      <link name="walls">
+        <collision name="back_collision"><pose>-2 0 1.25 0 0 0</pose><geometry><box><size>0.20 5.5 2.5</size></box></geometry></collision>
+        <visual name="back"><pose>-2 0 1.25 0 0 0</pose><geometry><box><size>0.20 5.5 2.5</size></box></geometry><material><ambient>0.72 0.78 0.84 1</ambient><diffuse>0.72 0.78 0.84 1</diffuse></material></visual>
+        <collision name="north_collision"><pose>0 2.65 1.25 0 0 0</pose><geometry><box><size>4.2 0.20 2.5</size></box></geometry></collision>
+        <visual name="north"><pose>0 2.65 1.25 0 0 0</pose><geometry><box><size>4.2 0.20 2.5</size></box></geometry><material><ambient>0.72 0.78 0.84 1</ambient><diffuse>0.72 0.78 0.84 1</diffuse></material></visual>
+        <collision name="south_collision"><pose>0 -2.65 1.25 0 0 0</pose><geometry><box><size>4.2 0.20 2.5</size></box></geometry></collision>
+        <visual name="south"><pose>0 -2.65 1.25 0 0 0</pose><geometry><box><size>4.2 0.20 2.5</size></box></geometry><material><ambient>0.72 0.78 0.84 1</ambient><diffuse>0.72 0.78 0.84 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="pickup_zone">
+      <static>true</static><pose>-7 -3.6 0.025 0 0 0</pose>
+      <link name="zone"><visual name="visual"><geometry><box><size>1.5 1.2 0.015</size></box></geometry><material><ambient>0.10 0.75 0.25 0.8</ambient><diffuse>0.10 0.75 0.25 0.8</diffuse></material></visual></link>
+    </model>
+
+    <!-- School-gate handover point. -->
+    <model name="handover_shelter">
+      <static>true</static><pose>7 5 0 0 0 0</pose>
+      <link name="shelter">
+        <collision name="back_collision"><pose>1.8 0 1.2 0 0 0</pose><geometry><box><size>0.18 4.0 2.4</size></box></geometry></collision>
+        <visual name="back"><pose>1.8 0 1.2 0 0 0</pose><geometry><box><size>0.18 4.0 2.4</size></box></geometry><material><ambient>0.78 0.68 0.52 1</ambient><diffuse>0.78 0.68 0.52 1</diffuse></material></visual>
+        <collision name="north_collision"><pose>0 1.9 1.2 0 0 0</pose><geometry><box><size>3.7 0.18 2.4</size></box></geometry></collision>
+        <visual name="north"><pose>0 1.9 1.2 0 0 0</pose><geometry><box><size>3.7 0.18 2.4</size></box></geometry><material><ambient>0.78 0.68 0.52 1</ambient><diffuse>0.78 0.68 0.52 1</diffuse></material></visual>
+        <collision name="south_collision"><pose>0 -1.9 1.2 0 0 0</pose><geometry><box><size>3.7 0.18 2.4</size></box></geometry></collision>
+        <visual name="south"><pose>0 -1.9 1.2 0 0 0</pose><geometry><box><size>3.7 0.18 2.4</size></box></geometry><material><ambient>0.78 0.68 0.52 1</ambient><diffuse>0.78 0.68 0.52 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="handover_zone">
+      <static>true</static><pose>6 4 0.025 0 0 0</pose>
+      <link name="zone"><visual name="visual"><geometry><box><size>1.5 1.2 0.015</size></box></geometry><material><ambient>0.10 0.45 0.95 0.8</ambient><diffuse>0.10 0.45 0.95 0.8</diffuse></material></visual></link>
+    </model>
+
+    <!-- A covered section represents a GPS-weak area. The simulated GPS node marks this rectangle as degraded. -->
+    <model name="covered_walkway">
+      <static>true</static><pose>4 0 0 0 0 0</pose>
+      <link name="cover">
+        <collision name="left_column_collision"><pose>0 1.8 1.1 0 0 0</pose><geometry><box><size>0.25 0.25 2.2</size></box></geometry></collision>
+        <visual name="left_column"><pose>0 1.8 1.1 0 0 0</pose><geometry><box><size>0.25 0.25 2.2</size></box></geometry><material><ambient>0.38 0.42 0.46 1</ambient><diffuse>0.38 0.42 0.46 1</diffuse></material></visual>
+        <collision name="right_column_collision"><pose>0 -1.8 1.1 0 0 0</pose><geometry><box><size>0.25 0.25 2.2</size></box></geometry></collision>
+        <visual name="right_column"><pose>0 -1.8 1.1 0 0 0</pose><geometry><box><size>0.25 0.25 2.2</size></box></geometry><material><ambient>0.38 0.42 0.46 1</ambient><diffuse>0.38 0.42 0.46 1</diffuse></material></visual>
+        <collision name="roof_collision"><pose>0 0 2.25 0 0 0</pose><geometry><box><size>2.5 4.0 0.20</size></box></geometry></collision>
+        <visual name="roof"><pose>0 0 2.25 0 0 0</pose><geometry><box><size>2.5 4.0 0.20</size></box></geometry><material><ambient>0.38 0.42 0.46 1</ambient><diffuse>0.38 0.42 0.46 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- Static obstacles used by the AVOID state and Nav2 costmap tests. -->
+    <model name="obstacle_crate">
+      <static>true</static><pose>-1.0 0.9 0.35 0 0 0.25</pose>
+      <link name="crate"><collision name="collision"><geometry><box><size>0.7 0.7 0.7</size></box></geometry></collision><visual name="visual"><geometry><box><size>0.7 0.7 0.7</size></box></geometry><material><ambient>0.70 0.35 0.10 1</ambient><diffuse>0.70 0.35 0.10 1</diffuse></material></visual></link>
+    </model>
+    <model name="obstacle_barrel">
+      <static>true</static><pose>1.0 -1.0 0.45 0 0 0</pose>
+      <link name="barrel"><collision name="collision"><geometry><cylinder><radius>0.28</radius><length>0.9</length></cylinder></geometry></collision><visual name="visual"><geometry><cylinder><radius>0.28</radius><length>0.9</length></cylinder></geometry><material><ambient>0.95 0.40 0.05 1</ambient><diffuse>0.95 0.40 0.05 1</diffuse></material></visual></link>
+    </model>
+
+    <!-- Fiducial-style board for camera visibility; the synthetic pose topic is published separately. -->
+    <model name="apriltag_station_board">
+      <static>true</static><pose>6.9 4 0.9 0 0 3.14159265</pose>
+      <link name="board">
+        <collision name="collision"><geometry><box><size>0.03 0.70 0.70</size></box></geometry></collision>
+        <visual name="white"><geometry><box><size>0.035 0.70 0.70</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <visual name="black_top"><pose>-0.02 0 0.28 0 0 0</pose><geometry><box><size>0.04 0.60 0.10</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual>
+        <visual name="black_bottom"><pose>-0.02 0 -0.28 0 0 0</pose><geometry><box><size>0.04 0.60 0.10</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual>
+        <visual name="black_left"><pose>-0.02 0.28 0 0 0 0</pose><geometry><box><size>0.04 0.10 0.60</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual>
+        <visual name="black_right"><pose>-0.02 -0.28 0 0 0 0</pose><geometry><box><size>0.04 0.10 0.60</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual>
+        <visual name="black_center_a"><pose>-0.025 0.12 0.12 0 0 0</pose><geometry><box><size>0.045 0.16 0.16</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual>
+        <visual name="black_center_b"><pose>-0.025 -0.12 -0.12 0 0 0</pose><geometry><box><size>0.045 0.16 0.16</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <gui fullscreen="0">
+      <camera name="user_camera"><pose>-13 -15 15 0 0.58 0.72</pose><view_controller>orbit</view_controller></camera>
+    </gui>
+  </world>
+</sdf>
