@@ -38,131 +38,131 @@ BioShuttle 是一套面向校园实验室的生物样本无人化接驳系统，
 
 
 ## 📁 目录结构
-
+```text
 cyberluban-campuscar-group4/
-├── README.md
-│
-├── algorithm/                         # 算法组代码
-│   ├── camera/
-│   │   └── camera_serial_v2.py
-│   └── rtk/                           # RTK与状态机
-│       ├── cyber算法wjh部分code/
-│       │   ├── A3 RTK/
-│       │   │   └── A3_rtk_standalone.py
-│       │   ├── A4状态机/
-│       │   │   └── bioshuttle_a4/
-│       │   │       ├── package.xml
-│       │   │       ├── README.md
-│       │   │       ├── setup.cfg
-│       │   │       ├── setup.py
-│       │   │       ├── bioshuttle_a4/
-│       │   │       │   ├── scenario_test_node.py
-│       │   │       │   ├── state_machine_core.py
-│       │   │       │   ├── state_machine_node.py
-│       │   │       │   └── __init__.py
-│       │   │       ├── launch/
-│       │   │       │   └── a4_state_machine.launch.py
-│       │   │       ├── resource/
-│       │   │       │   └── bioshuttle_a4
-│       │   │       └── test/
-│       │   │           └── test_state_machine_core.py
-│       │   └── A5 串口通信/
-│       │       └── A5_serial_comm_nuc.py
-│       └── __MACOSX/                   # macOS 系统元数据文件夹，可删除
-│
-├── docs/                               # 项目文档
-│   ├── protocols/                      # 协议文档（当前为空）
-│   └── 测试记录/                       # 所有测试日志
-│       ├── rtk天线/
-│       │   ├── rtk天线测试记录.md
-│       │   └── images/
-│       │       ├── rtk_数据传送.png
-│       │       ├── 串口通信_POS帧.png
-│       │       └── 状态机_状态流转截图.png
-│       ├── 小程序前端调试/
-│       │   ├── 小程序调试记录.md
-│       │   └── images/
-│       │       ├── 小程序展示1.png
-│       │       ├── 小程序展示2.png
-│       │       └── 小程序展示3.png
-│       ├── 电子锁+温湿度传感器/
-│       │   ├── 电子锁+温湿度传感器联调记录.md
-│       │   └── images/
-│       │       ├── 电子锁与温湿度传感器联调1.png
-│       │       └── 电子锁与温湿度传感器联调2.png
-│       └── 相机模块/
-│           ├── 相机模块测试记录.md
-│           └── images/
-│               └── 相机模块调试记录.jpg
-│
-├── embedded/                           # 电控组代码
-│   ├── Chassis_Drive/                  # 底盘驱动（STM32）
-│   │   └── campusCar-new-stm32-hikrobot/
-│   │       ├── .gitignore
-│   │       ├── .gitattributes
-│   │       ├── AGENTS.md
-│   │       ├── CLAUDE.md
-│   │       ├── README.md
-│   │       ├── esp32_pwm_gesture.ino
-│   │       ├── mediamtx.yml
-│   │       ├── PWM切换组合参数使用说明.md
-│   │       ├── config/                 # 配置文件
-│   │       ├── docker/                 # Docker相关
-│   │       ├── docs/                   # 文档
-│   │       ├── hardware/               # 硬件驱动（hoverboard）
-│   │       ├── scripts/                # 启动脚本
-│   │       ├── src/                    # Python源码
-│   │       ├── _forks/                 # 外部依赖
-│   │       └── ...（其他配置文件）
-│   │
-│   ├── Electronic Lock/                # 电子锁模块（ESP32）
-│   │   ├── platformio.ini
-│   │   ├── BioShuttle.code-workspace
-│   │   ├── .gitignore
-│   │   ├── src/
-│   │   │   ├── main.cpp
-│   │   │   └── camera_serial.py
-│   │   ├── include/README
-│   │   ├── lib/README
-│   │   └── test/README
-│   │
-│   ├── Integrated Test/                # 集成测试
-│   │   └── bioshuttle-sensors/
-│   │       ├── platformio.ini
-│   │       ├── README.md
-│   │       ├── .gitignore
-│   │       ├── unlock.py
-│   │       ├── 电子锁使用说明.md
-│   │       └── src/main.cpp
-│   │
-│   └── Temperature_Humidity/           # 温湿度模块（ESP32）
-│       ├── include/
-│       │   └── README.txt
-│       └── src/
-│           ├── main.cpp
-│           └── platformio.ini
-│
-└── mechanical/                         # 机械组文件
-    ├── CAD_files/                      # 3D模型源文件
-    │   ├── 接驳车装配体.SLDASM
-    │   ├── 接驳车装配体-工程图.SLDDRW
-    │   ├── 箱体.SLDPRT
-    │   ├── 箱盖.SLDPRT
-    │   ├── 电子锁锁体.SLDPRT
-    │   ├── 电子锁锁扣.SLDPRT
-    │   ├── 温湿度传感器.SLDPRT
-    │   ├── 相机.SLDPRT
-    │   ├── 合页夹.SLDPRT
-    │   ├── 铰链合页装配体.sldasm
-    │   ├── 转轴.SLDPRT
-    │   └── 四驱车.SLDPRT
-    └── Images/                         # sw建模截图
-        ├── Overall-1.png
-        ├── Overall-2.png
-        ├── Overall-3.png
-        ├── Overall-4.png
-        └── Drawing-Document.png
-
+├─algorithm
+│  ├─camera
+│  ├─mini-program
+│  │  ├─cloud-nuc
+│  │  └─miniprogram-1-cloud
+│  │      ├─pages
+│  │      │  ├─index
+│  │      │  ├─logs
+│  │      │  └─work
+│  │      └─utils
+│  ├─rtk
+│  │  ├─cyber绠楁硶wjh閮ㄧ讲code
+│  │  │  ├─A3 RTK
+│  │  │  ├─A4鐘舵€佹満
+│  │  │  │  └─bioshuttle_a4
+│  │  │  │      ├─bioshuttle_a4
+│  │  │  │      ├─launch
+│  │  │  │      ├─resource
+│  │  │  │      └─test
+│  │  │  └─A5 涓插彛閫氫俊
+│  │  └─__MACOSX
+│  │      └─cyber绠楁硶wjh閮ㄧ讲code
+│  │          ├─A3 RTK
+│  │          ├─A4鐘舵€佹満
+│  │          │  └─bioshuttle_a4
+│  │          │      ├─bioshuttle_a4
+│  │          │      ├─launch
+│  │          │      ├─resource
+│  │          │      └─test
+│  │          └─A5 涓插彛閫氫俊
+│  └─simulation
+│      ├─bioshuttle_sim
+│      │  ├─config
+│      │  ├─launch
+│      │  ├─scripts
+│      │  ├─urdf
+│      │  └─worlds
+│      ├─docker
+│      └─scripts
+├─docs
+│  ├─protocols
+│  └─测试记录
+│      ├─rtk天线
+│      │  └─images
+│      ├─小程序前端调试
+│      │  └─images
+│      ├─电子锁+温湿度传感器
+│      │  └─images
+│      └─相机模块
+│          └─images
+├─embedded
+│  ├─Chassis_Drive
+│  │  └─campusCar-new-stm32-hikrobot
+│  │      ├─.claude
+│  │      ├─.codex
+│  │      ├─.codex-memory
+│  │      │  └─systems
+│  │      ├─.git
+│  │      │  ├─hooks
+│  │      │  ├─info
+│  │      │  ├─logs
+│  │      │  │  └─refs
+│  │      │  │      └─heads
+│  │      │  │          ├─codex
+│  │      │  │          └─hardware
+│  │      │  ├─objects
+│  │      │  │  ├─info
+│  │      │  │  └─pack
+│  │      │  └─refs
+│  │      │      ├─heads
+│  │      │      │  ├─codex
+│  │      │      │  └─hardware
+│  │      │      └─tags
+│  │      ├─.github
+│  │      │  └─instructions
+│  │      ├─.vscode
+│  │      ├─config
+│  │      │  └─profiles
+│  │      ├─docker
+│  │      ├─docs
+│  │      ├─hardware
+│  │      │  └─hoverboard_driver
+│  │      │      ├─.github
+│  │      │      │  └─workflows
+│  │      │      ├─bringup
+│  │      │      │  ├─config
+│  │      │      │  └─launch
+│  │      │      ├─description
+│  │      │      │  ├─launch
+│  │      │      │  ├─ros2_control
+│  │      │      │  └─urdf
+│  │      │      ├─doc
+│  │      │      └─hardware
+│  │      │          └─include
+│  │      │              └─hoverboard_driver
+│  │      ├─scripts
+│  │      ├─src
+│  │      │  └─rtk_tools
+│  │      │      └─core
+│  │      └─_forks
+│  ├─Electronic Lock
+│  │  ├─.pio
+│  │  │  └─build
+│  │  │      └─esp32dev
+│  │  │          ├─FrameworkArduino
+│  │  │          │  └─libb64
+│  │  │          └─src
+│  │  ├─.vscode
+│  │  ├─include
+│  │  ├─lib
+│  │  ├─src
+│  │  └─test
+│  ├─Integrated Test
+│  │  └─bioshuttle-sensors
+│  │      ├─.vscode
+│  │      └─src
+│  └─Temperature_Humidity
+│      ├─include
+│      └─src
+└─mechanical
+    ├─CAD
+    └─Images
+```
 ## 硬件连接说明
 
 | 模块 | 主控 | 关键引脚 |
