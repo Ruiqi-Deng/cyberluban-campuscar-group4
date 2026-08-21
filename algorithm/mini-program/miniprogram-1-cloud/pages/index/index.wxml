@@ -1,0 +1,30 @@
+<!-- 首页：寄件/取件入口 + 小车状态 -->
+<view class="container">
+  <!-- 标题 -->
+  <view class="header">
+    <text class="title">🚀 BioShuttle</text>
+    <text class="subtitle">校园智能接驳系统</text>
+  </view>
+
+  <!-- 小车实时状态卡片 -->
+  <view class="status-card">
+    <text class="status-title">🤖 小车实时状态</text>
+    <text class="status-text">📍 {{robotLocation}}</text>
+    <text class="status-text">🌡️ {{temperature}}°C  💧 {{humidity}}%  🔋 {{battery}}V</text>
+    <text class="status-time">更新于：{{updateTime}}</text>
+  </view>
+
+  <!-- 两个大按钮 -->
+  <view class="button-group">
+    <view class="big-btn send-btn" bindtap="goToSend">
+      <text class="btn-icon">📤</text>
+      <text class="btn-label">寄件</text>
+      
+    </view>
+    <view class="big-btn pickup-btn" bindtap="goToPickup">
+      <text class="btn-icon">📥</text>
+      <text class="btn-label">取件</text>
+      
+    </view>
+  </view>
+</view>

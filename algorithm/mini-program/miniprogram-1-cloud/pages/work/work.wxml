@@ -1,0 +1,51 @@
+<!-- ===== 顶部返回栏 ===== -->
+<view class="header">
+  <text class="back" bindtap="goBack">← 返回</text>
+  <text class="header-title">{{pageTitle}}</text>
+</view>
+
+<!-- ===== 小车状态（共用） ===== -->
+<view class="card status-card">
+  <text class="card-title">🤖 实时状态</text>
+  <text class="status-text">{{robotStatus}}</text>
+</view>
+
+<!-- ===== 寄件模式（mode === 'send'） ===== -->
+<view wx:if="{{mode === 'send'}}" class="card">
+  <text class="card-title">📤 寄件</text>
+  <view class="label">📍 起始地点</view>
+  <input class="input" placeholder="如：实验室" bindinput="setOrigin" value="{{origin}}"/>
+  <view class="label">🏁 目的地点</view>
+  <input class="input" placeholder="如：校门口" bindinput="setTarget" value="{{target}}"/>
+  <view class="label">📦 样品名称</view>
+  <input class="input" placeholder="如：血液样本" bindinput="setSample" value="{{sample}}"/>
+  <view class="label">🌡️ 温湿度要求</view>
+  <input class="input" placeholder="如：4°C" bindinput="setTemp" value="{{temp}}"/>
+  <button class="btn btn-green" bindtap="createTask" disabled="{{isSubmitting}}">📤 下单寄件</button>
+  <text class="result">{{createResult}}</text>
+  <view wx:if="{{createdSampleCode}}" class="code-card">
+    <text>样品编码：{{createdSampleCode}}</text>
+    <text>取件码：{{createdPickupCode}}</text>
+  </view>
+</view>
+
+<!-- ===== 取件模式（mode === 'pickup'） ===== -->
+<view wx:if="{{mode === 'pickup'}}" class="card">
+  <text class="card-title">📥 取件</text>
+  <view class="label">📋 样品编码</view>
+  <input class="input" placeholder="如 BS202608200001" bindinput="setSampleCode" value="{{sampleCode}}"/>
+  <view class="label">🔑 取件码（4位数字）</view>
+  <input class="input" type="number" maxlength="4" placeholder="对方发给您的取件码" bindinput="setPickupCode" value="{{pickupCode}}"/>
+  <button class="btn btn-red" bindtap="pickupTask" disabled="{{isSubmitting}}">✅ 验证并取件</button>
+  <text class="result">{{pickupResult}}</text>
+</view>
+
+<!-- ===== 任务列表（两种模式都显示） ===== -->
+<view class="card">
+  <text class="card-title">📦 物流看板</text>
+  <view wx:for="{{taskList}}" wx:key="task_id" class="task-item">
+    <text>{{item.sample_code}} {{item.sample_name}}（{{item.origin.name}}→{{item.target.name}}）</text>
+    <text class="task-status">{{item.status_message}}</text>
+  </view>
+  <view wx:if="{{taskList.length === 0}}" class="empty-tip">暂无任务</view>
+</view>

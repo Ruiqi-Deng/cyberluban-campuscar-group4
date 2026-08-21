@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/work/work"
+  ],
+  "window": {
+    "navigationBarTitleText": "BioShuttle 接驳系统"
+  }
+}
